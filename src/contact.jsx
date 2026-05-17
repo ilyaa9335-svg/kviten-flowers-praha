@@ -36,19 +36,19 @@ function Contact({ lang, go }) {
         <p className="lede">{t.lede}</p>
 
         <div className="quick-contact">
-          <a className="qc" href="tel:+420703342207">
+          <a className="qc" href="tel:+420777772858">
             <div className="mt">{t.phoneLb}</div>
-            <div className="mv">+420 703 342 207</div>
+            <div className="mv">+420 777 772 858</div>
             <div style={{ fontSize: 12, color: "var(--ink-60)" }}>{t.phoneSub}</div>
           </a>
-          <a className="qc" href="https://wa.me/420703342207" target="_blank" rel="noreferrer">
+          <a className="qc" href="https://wa.me/420777772858" target="_blank" rel="noreferrer">
             <div className="mt">{t.waLb}</div>
-            <div className="mv">+420 703 342 207</div>
+            <div className="mv">+420 777 772 858</div>
             <div style={{ fontSize: 12, color: "var(--ink-60)" }}>{t.waSub}</div>
           </a>
-          <a className="qc" href="mailto:hello@kviten.cz">
+          <a className="qc" href="mailto:info@kvitkaboutique.cz">
             <div className="mt">{t.emailLb}</div>
-            <div className="mv">hello@kviten.cz</div>
+            <div className="mv">info@kvitkaboutique.cz</div>
             <div style={{ fontSize: 12, color: "var(--ink-60)" }}>{t.emailSub}</div>
           </a>
         </div>
@@ -59,7 +59,7 @@ function Contact({ lang, go }) {
           <div className="ci-row">
             <div className="lb">{t.addressLb}</div>
             <div className="val">
-              Francouzská, Praha 2<br />Vinohrady · 120 00
+              Plzeňská 1282/105, Praha 5<br />Košíře · 150 00
               <span className="mute">{t.addressSub}</span>
             </div>
           </div>
@@ -67,17 +67,19 @@ function Contact({ lang, go }) {
             <div className="lb">{t.hoursLb}</div>
             <div className="val" style={{ width: "100%" }}>
               <div className="hours">
-                <span className="dy today">Po–Pá</span><span className="hr today">09:00 – 19:00</span>
-                <span className="dy">Sobota</span><span className="hr">10:00 – 18:00</span>
-                <span className="dy">Neděle</span><span className="hr">10:00 – 16:00</span>
+                {window.STRINGS[lang].foot.hoursRows.map((r, i) => (
+                  <React.Fragment key={i}>
+                    <span className="dy">{r[0]}</span><span className="hr">{r[1]}</span>
+                  </React.Fragment>
+                ))}
               </div>
             </div>
           </div>
           <div className="ci-row">
             <div className="lb">{t.igLb}</div>
             <div className="val">
-              <a href="https://instagram.com/kviten_flowers_praha" target="_blank" rel="noreferrer">@kviten_flowers_praha</a>
-              <span className="mute">11,8K {lang === 'en' ? 'followers' : lang === 'uk' ? 'підписників' : lang === 'ru' ? 'подписчиков' : 'sledujících'} · 61 {lang === 'en' ? 'posts' : 'postů'}</span>
+              <a href="https://instagram.com/kvitka_boutique_prague" target="_blank" rel="noreferrer">@kvitka_boutique_prague</a>
+              <span className="mute">500 {lang === 'en' ? 'followers' : lang === 'uk' ? 'підписників' : lang === 'ru' ? 'подписчиков' : 'sledujících'} · 47 {lang === 'en' ? 'posts' : 'postů'}</span>
             </div>
           </div>
           <div className="ci-row">
@@ -142,12 +144,12 @@ function Contact({ lang, go }) {
 
       <section className="wrap">
         <div className="map-wide">
-          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=14.435%2C50.072%2C14.460%2C50.084&layer=mapnik&marker=50.077%2C14.447" loading="lazy" title="Map"></iframe>
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=14.3725%2C50.0658%2C14.3925%2C50.0758&layer=mapnik&marker=50.0708%2C14.3825" loading="lazy" title="Map"></iframe>
           <div className="map-overlay">
-            <div className="eb">Kviten' · Flowers & Decor</div>
+            <div className="eb">Kvitka Boutique · Premium Bouquets</div>
             <h4>{t.mapTitle}</h4>
             <p>{t.mapDesc}</p>
-            <p style={{ fontFamily: "var(--serif)", fontSize: 16, marginTop: 12, color: "var(--plum)" }}>Francouzská, Praha 2<br />Vinohrady · 120 00</p>
+            <p style={{ fontFamily: "var(--serif)", fontSize: 16, marginTop: 12, color: "var(--plum)" }}>Plzeňská 1282/105, Praha 5<br />Košíře · 150 00</p>
           </div>
         </div>
       </section>

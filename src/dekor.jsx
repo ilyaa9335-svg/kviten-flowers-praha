@@ -18,7 +18,7 @@ function Dekor({ lang, go }) {
       <section className="wrap feature">
         <div className="feature-grid">
           <div className="feature-photo">
-            <img src={IMG.b1} alt="Kviten wedding decor — Prague" />
+            <img src={IMG.b1} alt="Kvitka Boutique wedding bouquets — Prague" />
             <div className="feature-tag">
               <span className="live"></span>
               {t.tag}
@@ -32,7 +32,7 @@ function Dekor({ lang, go }) {
             </div>
             <div className="feature-cta">
               <a className="hbtn filled" onClick={() => go("contact")}>{t.ctaPrimary}</a>
-              <a className="hbtn" href="https://wa.me/420703342207" target="_blank" rel="noreferrer">{t.ctaSecondary}</a>
+              <a className="hbtn" href="https://wa.me/420777772858" target="_blank" rel="noreferrer">{t.ctaSecondary}</a>
             </div>
           </div>
         </div>

@@ -24,41 +24,48 @@ function ShopProduct({ name, italic, price, code, badge, img, onOpen }) {
 // Product fixtures — 4 items per category, using our real images rotated
 const CATS = {
   classic: [
-    { name: "Amber", italic: "", price: "1 600 Kč", code: "KV-001", img: IMG.wedding, badge: "Nová" },
-    { name: "Luna", italic: "mini", price: "1 200 Kč", code: "KV-002", img: IMG.boxGold },
-    { name: "Ivy", italic: "", price: "1 800 Kč", code: "KV-003", img: IMG.peach },
-    { name: "Paulina", italic: "", price: "1 400 Kč", code: "KV-004", img: IMG.b2 }
+    { name: "Blossom", italic: "", price: "1 900 Kč", code: "FB-001", img: IMG.peach, badge: "Nová" },
+    { name: "Rosé", italic: "mini", price: "1 500 Kč", code: "FB-002", img: IMG.b1 },
+    { name: "Lila", italic: "", price: "2 200 Kč", code: "FB-003", img: IMG.boxPink },
+    { name: "Bella", italic: "", price: "2 800 Kč", code: "FB-004", img: IMG.b2 }
   ],
   signature: [
-    { name: "Vesna", italic: "signature", price: "2 400 Kč", code: "KV-011", img: IMG.peach },
-    { name: "Sofia", italic: "", price: "1 800 Kč", code: "KV-012", img: IMG.b2 },
-    { name: "Nadia", italic: "signature", price: "2 100 Kč", code: "KV-013", img: IMG.wedding, badge: "Bestseller" },
-    { name: "Olea", italic: "", price: "2 500 Kč", code: "KV-014", img: IMG.premium }
+    { name: "Hydrangea", italic: "dream", price: "3 500 Kč", code: "FB-011", img: IMG.premium, badge: "Bestseller" },
+    { name: "Peony", italic: "cloud", price: "4 200 Kč", code: "FB-012", img: IMG.boxGold },
+    { name: "Aurora", italic: "signature", price: "3 800 Kč", code: "FB-013", img: IMG.wedding },
+    { name: "Lavender", italic: "mix", price: "4 500 Kč", code: "FB-014", img: IMG.b2 }
   ],
   premium: [
-    { name: "Luna", italic: "premium", price: "3 200 Kč", code: "KV-021", img: IMG.premium, badge: "Hero" },
-    { name: "Aurora", italic: "", price: "3 800 Kč", code: "KV-022", img: IMG.boxGold },
-    { name: "Selene", italic: "premium", price: "3 400 Kč", code: "KV-023", img: IMG.peach },
-    { name: "Isolde", italic: "", price: "3 600 Kč", code: "KV-024", img: IMG.wedding }
+    { name: "Grand", italic: "peony", price: "6 500 Kč", code: "FB-021", img: IMG.boxGold, badge: "Hero" },
+    { name: "Royal", italic: "hydrangea", price: "7 200 Kč", code: "FB-022", img: IMG.premium },
+    { name: "Luxe", italic: "garden", price: "8 500 Kč", code: "FB-023", img: IMG.peach },
+    { name: "Imperial", italic: "roses", price: "9 000 Kč", code: "FB-024", img: IMG.b1 }
   ],
   wedding: [
-    { name: "Klára", italic: "bridal", price: "Na míru", code: "KV-W01", img: IMG.premium },
-    { name: "Belle", italic: "bridal", price: "Na míru", code: "KV-W02", img: IMG.wedding },
-    { name: "Flora", italic: "arch", price: "od 12 000", code: "KV-W03", img: IMG.boxGold },
-    { name: "Élise", italic: "bridal", price: "Na míru", code: "KV-W04", img: IMG.peach }
+    { name: "Bridal", italic: "classic", price: "Na míru", code: "FB-W01", img: IMG.wedding },
+    { name: "Ceremony", italic: "arch", price: "od 15 000", code: "FB-W02", img: IMG.premium },
+    { name: "Table", italic: "runner", price: "od 8 000", code: "FB-W03", img: IMG.boxGold },
+    { name: "Garden", italic: "bridal", price: "Na míru", code: "FB-W04", img: IMG.peach }
   ],
   event: [
-    { name: "Maison", italic: "centerpiece", price: "od 2 800", code: "KV-E01", img: IMG.boxGold },
-    { name: "Velvet", italic: "installation", price: "od 8 000", code: "KV-E02", img: IMG.peach },
-    { name: "Praha", italic: "opening", price: "Na míru", code: "KV-E03", img: IMG.premium },
-    { name: "Jardin", italic: "runner", price: "od 4 500", code: "KV-E04", img: IMG.b2 }
+    { name: "Birthday", italic: "luxe", price: "od 3 500", code: "FB-E01", img: IMG.b1 },
+    { name: "Corporate", italic: "gift", price: "od 5 000", code: "FB-E02", img: IMG.boxPink },
+    { name: "Anniversary", italic: "grand", price: "Na míru", code: "FB-E03", img: IMG.premium },
+    { name: "Thank You", italic: "bouquet", price: "od 2 500", code: "FB-E04", img: IMG.wedding }
   ]
 };
 
-function Shop({ lang, go }) {
+function Shop({ lang, go, addToCart }) {
   const t = window.STRINGS[lang].shop;
   const [filter, setFilter] = React.useState(0);
   const [open, setOpen] = React.useState(null);
+  const [added, setAdded] = React.useState(false);
+
+  const handleAddToCart = (product) => {
+    if (addToCart) addToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
+  };
   const showCats = filter === 0 ? t.categories : [t.categories[filter - 1]];
 
   return (
@@ -92,10 +99,6 @@ function Shop({ lang, go }) {
                 <h2 className="title">{c.title1} <span className="em">{c.title2}</span></h2>
                 <p className="desc">{c.desc}</p>
               </div>
-              <div className="cta">
-                <a className="hbtn" href="tel:+420703342207">{t.orderCta}</a>
-                <a className="hbtn filled" href="https://wa.me/420703342207" target="_blank" rel="noreferrer">{t.whatsappCta}</a>
-              </div>
             </div>
             <div className="prod-grid">
               {products.map((p, i) => (
@@ -116,17 +119,18 @@ function Shop({ lang, go }) {
                 <h3>{open.name} <span style={{ fontStyle: "italic", color: "var(--plum-soft)", fontWeight: 300 }}>{open.italic}</span></h3>
               </div>
               <div className="price">{open.price}</div>
-              <div className="desc">Ručně vázaná kytice z čerstvých sezónních květin. Každá kytice je originál, drobné odchylky od fotografie jsou přirozené.</div>
+              <div className="desc">{lang === "cs" ? "Prémiová kytice z čerstvých sezónních květin. Každá kytice je originál." : lang === "uk" ? "Преміальний букет зі свіжих сезонних квітів. Кожен букет — оригінал." : lang === "ru" ? "Премиальный букет из свежих сезонных цветов. Каждый букет — оригинал." : "Premium bouquet from fresh seasonal flowers. Each bouquet is unique."}</div>
               <div className="specs">
                 <div><div className="lb">Kód</div><div className="vl">{open.code}</div></div>
-                <div><div className="lb">Velikost</div><div className="vl">M · 45 cm</div></div>
-                <div><div className="lb">Doručení</div><div className="vl">2 hodiny</div></div>
+                <div><div className="lb">{lang === "cs" ? "Velikost" : "Size"}</div><div className="vl">M · 45 cm</div></div>
+                <div><div className="lb">{lang === "cs" ? "Doručení" : "Delivery"}</div><div className="vl">{lang === "cs" ? "2 hodiny" : "2 hours"}</div></div>
                 <div><div className="lb">Kategorie</div><div className="vl">{open.cat.title1}</div></div>
               </div>
               <div className="ord">
-                <a className="btn-ord primary" href="tel:+420703342207">Objednat telefonem · +420 703 342 207</a>
-                <a className="btn-ord wh" href="https://wa.me/420703342207" target="_blank" rel="noreferrer">WhatsApp — rychlá odpověď</a>
-                <a className="btn-ord out" onClick={() => { setOpen(null); go("contact"); }}>Formulář poptávky</a>
+                <button className={"btn-ord btn-add-cart" + (added ? " added" : "")} onClick={() => handleAddToCart(open)}>
+                  {added ? (lang === "cs" ? "✓ Přidáno do košíku" : "✓ Added to cart") : (lang === "cs" ? "Přidat do košíku" : "Add to cart")}
+                </button>
+                <a className="btn-ord out" onClick={() => { setOpen(null); go("contact"); }}>{lang === "cs" ? "Formulář poptávky" : lang === "uk" ? "Форма запиту" : lang === "ru" ? "Форма запроса" : "Enquiry form"}</a>
               </div>
             </div>
             <button className="close" onClick={() => setOpen(null)}>×</button>

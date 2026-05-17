@@ -16,7 +16,7 @@ function About({ lang, go }) {
       </section>
 
       <section className="about-photos wrap">
-        <div className="ap big"><img src={IMG.shop} alt="Kviten shop front" /></div>
+        <div className="ap big"><img src={IMG.shop} alt="Kvitka Boutique Praha" /></div>
         <div className="ap"><img src={IMG.wedding} alt="Hand-tied pink bouquet" /></div>
         <div className="ap"><img src={IMG.boxGold} alt="Peach gladiolus bouquet" /></div>
         <div className="ap"><img src={IMG.peach} alt="Gold box with orchids" /></div>
@@ -28,12 +28,12 @@ function About({ lang, go }) {
           {t.lead1} <span className="em italic">{t.leadEm}</span> {t.lead2}
         </div>
         <div className="body">
-          <p><span className="initial serif">K</span>{t.body1}</p>
+          <p><span className="initial serif">F</span>{t.body1}</p>
           <p>{t.body2}</p>
           <p>{t.body3}</p>
           <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
-            <a className="hbtn filled" onClick={() => go("shop")}>Prohlédnout kolekci</a>
-            <a className="hbtn" onClick={() => go("contact")}>Kontaktovat nás</a>
+            <a className="hbtn filled" onClick={() => go("shop")}>{lang === "cs" ? "Prohlédnout kolekci" : lang === "uk" ? "Переглянути колекцію" : lang === "ru" ? "Посмотреть коллекцию" : "Browse collection"}</a>
+            <a className="hbtn" onClick={() => go("contact")}>{lang === "cs" ? "Kontaktovat nás" : lang === "uk" ? "Зв'язатися з нами" : lang === "ru" ? "Связаться с нами" : "Contact us"}</a>
           </div>
         </div>
       </section>

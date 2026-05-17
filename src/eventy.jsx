@@ -33,7 +33,7 @@ function Eventy({ lang, go }) {
             </div>
           </div>
           <div className="feature-photo">
-            <img src={IMG.b1} alt="Kviten event decor — Prague" />
+            <img src={IMG.b1} alt="Kvitka Boutique special occasions — Prague" />
             <div className="feature-tag">
               <span className="live"></span>
               {t.tag}
@@ -51,7 +51,7 @@ function Eventy({ lang, go }) {
           <p>{t.body2}</p>
           <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
             <a className="hbtn filled" onClick={() => go("contact")}>{t.ctaPrimary}</a>
-            <a className="hbtn" href="https://wa.me/420703342207" target="_blank" rel="noreferrer">{t.ctaSecondary}</a>
+            <a className="hbtn" href="https://wa.me/420777772858" target="_blank" rel="noreferrer">{t.ctaSecondary}</a>
           </div>
         </div>
       </section>
